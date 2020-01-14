@@ -1,0 +1,37 @@
+<div class="container">
+<div class="row">
+<h2>投稿した質問一覧</h2>
+<% @questions.each do |question|%>
+<%= link_to question do%>
+<div class="col-md-12 margin-top-5per artcle-block">
+<%# <%=image_tag 'tree.jpg', class:'img-responsive padding-top-15per'%> 
+<div class="padding-bottom-15">
+<p class="title">
+<%=question.title%>
+</p>
+<p>
+<%=question.created_at.strftime("%Y年%m月%d日")%>
+</p>
+</div>
+</div>
+<%end%>
+<%end%>
+<h2>ブックマークした質問一覧</h2>
+<% @bookmark_questions.each do |bookmark_question|%>
+<%= link_to bookmark_question do%>
+<div class="col-md-12 margin-top-5per artcle-block">
+<%# <%=image_tag 'tree.jpg', class:'img-responsive padding-top-15per'%> 
+<div class="padding-bottom-15">
+<p class="title">
+<%=bookmark_question.title%>
+</p>
+<p>
+<%=bookmark_question.created_at.strftime("%Y年%m月%d日")%>
+</p>
+</div>
+</div>
+<%end%>
+<%end%>
+
+</div>
+</div>

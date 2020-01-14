@@ -1,0 +1,21 @@
+<div class="container">
+<div class="row">
+<% @results.each do |result|%>
+ 
+    <p class="title">
+    <%=link_to(result.title, "/questions/#{result.id}") %>
+     </p>
+       <p>
+    <%=result.created_at.strftime("%Y年%m月%d日")%>
+
+     </p> 
+
+  
+<% end %>
+
+</div>
+<div class="buttun">
+<%=link_to '新規作成',new_question_path,class:"margin-top-5per btn btn-primary",style:'margin-bottom:10px;'%>
+</div>
+<%= paginate @results %>
+</div>

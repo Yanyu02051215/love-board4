@@ -1,0 +1,104 @@
+<div class="container">
+<div class="col-md-12 margin-top-5per artcle-block">
+<%# <%=image_tag 'tree.jpg', class:'img-responsive padding-top-15per article-image'%>
+<h1><%= @question.title%></h1>
+<div class="padding-bottom-15">
+<p class="title">
+<div class="username">
+<%if @question.user.image%>
+<%= image_tag "#{@question.user.image}" ,class:"icon_image2"%> 
+<% else %>
+<%= image_tag "/images/default.jpg" ,class:"icon_image2"%> 
+<%end%>
+<%=@question.user.name%>さんの質問
+</div>
+<div class="question-body">
+<%=@question.body%>
+</div>
+</p>
+<p class="text-right">
+<%=@question.created_at.strftime("%Y年%m月%d日")%>
+</p>
+</div>
+<% if current_user%>
+<%=link_to '編集',edit_question_path(@question),class:'btn btn-primary',style:'margin-bottom:30px;margin-right:10px;'if @question.user_id == current_user.id%>
+<%=link_to '削除',question_path(@question),method: :delete,data: {confirm: "削除しますか？"},class:'btn btn-danger',style:'margin-bottom:30px;'if @question.user_id == current_user.id%>
+<%=link_to '回答する',"/questions/#{@question.id}/answers/new",class:'btn btn-info',style:'margin-bottom:30px;margin-right:10px;'if @question.user_id != current_user.id%>
+<%end%>
+<% if user_signed_in? && !Bookmark.exists?(user_id: current_user.id, question_id: @question.id)%>
+  <%= link_to 'ブックマーク',"/questions/#{@question.id}/bookmark",method: :post, class:'btn btn-info',style:'margin-bottom:30px;margin-right:10px;'%>
+<%elsif user_signed_in?%>
+  <%= link_to 'ブックマーク解除',"/bookmarks/#{@question.id}",method: :delete, class:'btn btn-info',style:'margin-bottom:30px;margin-right:10px;'%>
+<%else%>
+<%end%>
+</div>
+
+<% if @bestanswer %>
+<div>
+<h3>ベストアンサー</h3>
+<%= @bestanswer.body %>
+<%= @bestanswer.created_at.strftime("%Y年%m月%d日") %>
+</div>
+<% end %>
+
+<ul style="padding: 0">
+  <% @answers.each do |answer| %>
+  <li class="li">
+    <div class="thumbnail__caption">
+        <div class="answer-prof">
+        <%if answer.user.image%>
+        <%= image_tag "#{answer.user.image}" ,class:"icon_image3"%> 
+        <% else %>
+        <%= image_tag "/images/default.jpg" ,class:"icon_image3"%> 
+        <%end%>
+        <%# <h3 class="text-xsmall text-overflow" title="<%= answer.user.name %>
+        <%= answer.user.name %>さんの回答
+      <%# </h3> %>
+      </div>
+      
+      <p>
+        <div class="answer-body">
+        <%= answer.body %>
+        </div>
+        <p class="text-right">
+        <%=answer.created_at.strftime("%Y年%m月%d日")%>
+        </p>
+        <% if current_user%>
+        <%=link_to "編集",edit_answer_path(answer) if answer.user_id == current_user.id %>
+        <%=link_to '削除',answer_path(answer),method: :delete,data: {confirm: "削除しますか？"},style:'margin-bottom:10px;,margin-left:10px;' if answer.user_id == current_user.id%>
+        <%end%>
+        <% if user_signed_in? %>
+        <%unless @answe_is_best.include?(true)%>
+        <%= link_to 'ベストアンサー',"/answers/#{answer.id}/is_best",method: :post, class:'btn btn-info',style:'margin-bottom:30px;margin-right:10px;'%>
+        <%end%>
+        <%end%>
+      </p>
+    </div>
+    <% if current_user%>
+    <%if @question.user_id == current_user.id%>
+    <%= form_for @reaction , url:"/answers/#{answer.id}/reaction" do |f| %>
+      <%=f.label:body,"返信する"%>
+      <div class="form-group padding-top-15per">
+      <%=f.text_area:body ,rows: 1,class:'form-control'%>
+      </div>
+      <%=f.submit "返信する",class:'btn btn-info',style:'margin-bottom:30px;margin-right:10px;'%>
+    <%end %>
+     <%end%>
+
+    <%end%>
+    
+
+    <% answer.reactions.each do |reaction| %>
+      <%= reaction.body%>
+      <% if current_user%>
+      <%=link_to "編集",edit_reaction_path(reaction) if reaction.user_id == current_user.id %>
+      <%=link_to '削除',reaction_path(reaction),method: :delete,data: {confirm: "削除しますか？"},style:'margin-bottom:10px;,margin-left:10px;' if reaction.user_id == current_user.id%>
+      <%end%>
+      <br>
+    <%end%>
+
+  </li>
+  <% end %>
+</ul>
+
+</div>
