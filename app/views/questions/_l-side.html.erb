@@ -1,0 +1,26 @@
+<div class="l-side">
+  <nav class="mypage-nav">
+    <ul class="mypage-nav-list">
+      <li>
+        <%= link_to "質問カテゴリー", edit_user_path(current_user) ,class:'mypage-nav-list-item' if user_signed_in?%>
+        <i class="icon-arrow-right"></i>
+     </li>
+     <li>
+        <%= link_to "性別", edit_user_path(current_user) ,class:'mypage-nav-list-item' if user_signed_in?%>
+        <i class="icon-arrow-right"></i>
+     </li>
+     <li>
+        <%= link_to "年代", edit_user_path(current_user) ,class:'mypage-nav-list-item' if user_signed_in?%>
+        <i class="icon-arrow-right"></i>
+     </li>
+      <li>
+        <%= link_to "マイページ", user_path(current_user.id) ,class:'mypage-nav-list-item'if user_signed_in? %>
+        <i class="icon-arrow-right"></i>
+      </li>
+      <li>
+        <%= link_to "マイページの編集", edit_user_path(current_user) ,class:'mypage-nav-list-item' if user_signed_in?%>
+        <i class="icon-arrow-right"></i>
+     </li>
+    </ul>
+  </nav>
+</div>

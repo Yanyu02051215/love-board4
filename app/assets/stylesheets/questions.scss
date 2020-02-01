@@ -20,30 +20,6 @@ body{
   line-height:80px;
 }
 
-// .sidebar {
-//   float:right;
-//   display: flex;
-//   justify-content: center;
-//   // position: sticky;
-//   top: 10px;
-//   width: 180px;
-//   height: 100vh;
-//   background: #30b298;
-//   padding:0;
-//   margin-top: -20px;
-// }
-
-// .search{
-//   margin-top:40px;
-// }
-
-// .mypage{
-//   margin-top:30px;
-// }
-
-// .mypage-edit{
-//   margin-top:30px;
-// }
 
 
 .icon_image {
@@ -109,9 +85,44 @@ ul {
   border-bottom: medium dotted gray;
 }
 
-// .search2{
-//   margin-left:40px;
-//   margin-bottom:50px;
-// }
+.search-box__text {
+  position: relative;
+  padding: 0;
+  width: 70%;
+  height: 40px;
+  font-size: 14px;
+  padding-left: 10px;
+  padding-right: 40px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  background-color: white;
+  margin-left: 67px;
 
+}
+.search-box__btn {
+  width:40px;
+  height:40px;
+  border-radius: 4px;
+}
 
+.footer-write-btn {
+  bottom: 32px;
+  right: 32px;
+  width: 160px;
+  height: 160px;
+  font-size: 22px;
+  position: fixed;
+  z-index: 1000;
+  border-radius: 50%;
+  background:#33CCFF;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  p {
+    margin: 32px 0 0;
+ } 
+ .fa-pen {
+  margin: 8px 0 0;
+  font-size: 43px;
+}
+}

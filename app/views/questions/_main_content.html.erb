@@ -1,21 +1,24 @@
 <div class="container">
-<div class="row">
-<% @results.each do |result|%>
- 
-    <p class="title">
-    <%=link_to(result.title, "/questions/#{result.id}") %>
-     </p>
-       <p>
-    <%=result.created_at.strftime("%Y年%m月%d日")%>
+  <ul class="row",style="padding-left: 0px;padding-top: 0px;">
+    <% @results.each do |result|%>
 
-     </p> 
+      <li class="question-form">
+        <p class="title">
+        <%=link_to(result.title, "/questions/#{result.id}") %>
+        </p>
+          <p>
+        <%=result.created_at.strftime("%Y年%m月%d日")%>
+        </p> 
 
-  
-<% end %>
+      </li>
+    <% end %>
 
-</div>
-<div class="buttun">
-<%=link_to '新規作成',new_question_path,class:"margin-top-5per btn btn-primary",style:'margin-bottom:10px;'%>
+  </ul>
+<div class="footer-sell-btn-main">
+<%=link_to new_question_path,class:"footer-write-btn" do%>
+  <p>新規作成</p>
+  <i class="fas fa-pen"></i>
+  <% end %>
 </div>
 <%= paginate @results %>
 </div>

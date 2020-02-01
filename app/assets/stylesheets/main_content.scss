@@ -2,13 +2,20 @@
   .row{
     display: inline-block;
     vertical-align: top;
-    background-color: white;
     margin: 40px auto 0;
     width: 700px;
     padding-left:30px;
     padding-top: 30px;
+    .question-form{
+    background-color: white;
+    padding-left: 30px;
+    padding-top: 15px;
+    padding-bottom: 7px;
+    margin-bottom: 20px;
+    transition: box-shadow .5s;
+    }
   }
-  .btn-primary{
-    margin-top: 20px;
-  }
+}
+.question-form:hover{
+  box-shadow: 0 12px 12px gray;
 }
