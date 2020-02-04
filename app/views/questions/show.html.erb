@@ -1,6 +1,5 @@
 <div class="container">
-<div class="col-md-12 margin-top-5per artcle-block">
-<%# <%=image_tag 'tree.jpg', class:'img-responsive padding-top-15per article-image'%>
+<div class=" margin-top-5per artcle-block">
 <h1><%= @question.title%></h1>
 <div class="padding-bottom-15">
 <p class="title">
@@ -34,10 +33,22 @@
 </div>
 
 <% if @bestanswer %>
-<div>
+<div class="bestanswer">
 <h3>ベストアンサー</h3>
+<div class="answer-prof">
+<%if @bestuser.image%>
+<%= image_tag "#{@bestuser.image}" ,class:"icon_image3"%> 
+<% else %>
+<%= image_tag "/images/default.jpg" ,class:"icon_image3"%> 
+<%end%>
+<%= @bestuser.name %>さんの回答
+</div>
+<p class="answer-body">
 <%= @bestanswer.body %>
+</p>
+<p class="text-right">
 <%= @bestanswer.created_at.strftime("%Y年%m月%d日") %>
+</p>
 </div>
 <% end %>
 
@@ -51,12 +62,10 @@
         <% else %>
         <%= image_tag "/images/default.jpg" ,class:"icon_image3"%> 
         <%end%>
-        <%# <h3 class="text-xsmall text-overflow" title="<%= answer.user.name %>
         <%= answer.user.name %>さんの回答
-      <%# </h3> %>
       </div>
       
-      <p>
+      
         <div class="answer-body">
         <%= answer.body %>
         </div>
@@ -72,7 +81,7 @@
         <%= link_to 'ベストアンサー',"/answers/#{answer.id}/is_best",method: :post, class:'btn btn-info',style:'margin-bottom:30px;margin-right:10px;'%>
         <%end%>
         <%end%>
-      </p>
+  
     </div>
     <% if current_user%>
     <%if @question.user_id == current_user.id%>
@@ -89,7 +98,19 @@
     
 
     <% answer.reactions.each do |reaction| %>
-      <%= reaction.body%>
+      <div class="reactionusername">
+        <%if @question.user.image%>
+        <%= image_tag "#{@question.user.image}" ,class:"icon_image2"%> 
+        <% else %>
+        <%= image_tag "/images/default.jpg" ,class:"icon_image2"%> 
+        <%end%>
+        <%=@question.user.name%>さんからの返信
+      </div>
+      <div class="reactionbody">
+        <p>
+          <%= reaction.body%>
+        </p>
+      <div>
       <% if current_user%>
       <%=link_to "編集",edit_reaction_path(reaction) if reaction.user_id == current_user.id %>
       <%=link_to '削除',reaction_path(reaction),method: :delete,data: {confirm: "削除しますか？"},style:'margin-bottom:10px;,margin-left:10px;' if reaction.user_id == current_user.id%>

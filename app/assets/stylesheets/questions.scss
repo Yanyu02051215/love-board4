@@ -53,15 +53,33 @@ body{
   font-size:20px;
 }
 
-.answer-body{
-  font-size:20px;
-  margin-bottom:20px;
-}
-
 
 .btn-info{
   margin-bottom: 20px;
 }
+
+.thumbnail__caption{
+  .answer-body{
+    font-size:20px;
+    margin-bottom:20px;
+    margin-top:20px;
+  }
+  .text-right{
+    margin-right: 20px;
+  }
+}
+
+.bestanswer{
+  .answer-body{
+    font-size:20px;
+    margin-bottom:20px;
+    margin-top:20px;
+  }
+  .text-right{
+    margin-right: 20px;
+  }
+}
+
 
 
 .icon_image3{
@@ -72,7 +90,7 @@ body{
   //画像を丸くする
   object-fit: cover;
   //タテヨコ比を変えないままトリミング
-  margin-top:20px;
+  // margin-top:20px;
 }
 
 ul {
