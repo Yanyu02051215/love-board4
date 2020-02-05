@@ -111,11 +111,13 @@
           <%= reaction.body%>
         </p>
       <div>
+      <div class="reaction-edit">
       <% if current_user%>
       <%=link_to "編集",edit_reaction_path(reaction) if reaction.user_id == current_user.id %>
       <%=link_to '削除',reaction_path(reaction),method: :delete,data: {confirm: "削除しますか？"},style:'margin-bottom:10px;,margin-left:10px;' if reaction.user_id == current_user.id%>
       <%end%>
-      <br>
+      </div>
+      <%# <br> %>
     <%end%>
 
   </li>

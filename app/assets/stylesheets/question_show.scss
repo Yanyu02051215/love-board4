@@ -26,13 +26,17 @@
   color: #555;
   background: #e0edff;
   width:95%;
+  .reaction-edit{
+    float: right;
+    font-size: 13px;
+  }
 }
 .reactionbody:before {
   content: "";
   position: absolute;
   top: -30px;
   left: 50%;
-  margin-left: -300px;
+  margin-left: -330px;
   border: 15px solid transparent;
   border-bottom: 15px solid #e0edff;
 }
