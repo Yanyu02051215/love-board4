@@ -33,23 +33,23 @@
 </div>
 
 <% if @bestanswer %>
-<div class="bestanswer">
-<h3>ベストアンサー</h3>
-<div class="answer-prof">
-<%if @bestuser.image%>
-<%= image_tag "#{@bestuser.image}" ,class:"icon_image3"%> 
-<% else %>
-<%= image_tag "/images/default.jpg" ,class:"icon_image3"%> 
-<%end%>
-<%= @bestuser.name %>さんの回答
-</div>
-<p class="answer-body">
-<%= @bestanswer.body %>
-</p>
-<p class="text-right">
-<%= @bestanswer.created_at.strftime("%Y年%m月%d日") %>
-</p>
-</div>
+  <div class="bestanswer">
+    <h3>ベストアンサー</h3>
+    <div class="answer-prof">
+      <%if @bestuser.image%>
+      <%= image_tag "#{@bestuser.image}" ,class:"icon_image3"%> 
+      <% else %>
+      <%= image_tag "/images/default.jpg" ,class:"icon_image3"%> 
+      <%end%>
+      <%= @bestuser.name %>さんの回答
+    </div>
+      <p class="answer-body">
+        <%= @bestanswer.body %>
+      </p>
+      <p class="text-right">
+      <%= @bestanswer.created_at.strftime("%Y年%m月%d日") %>
+      </p>
+  </div>
 <% end %>
 
 <ul style="padding: 0">

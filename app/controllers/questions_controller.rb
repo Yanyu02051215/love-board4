@@ -17,6 +17,7 @@ class QuestionsController < ApplicationController
      end
     @bestanswer = @answers.find_by(is_best: true)
     @bestuser = User.find(@bestanswer.user_id)
+   
   end
 
   def edit
