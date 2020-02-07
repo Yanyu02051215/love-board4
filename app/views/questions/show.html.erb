@@ -25,7 +25,8 @@
 <%=link_to '回答する',"/questions/#{@question.id}/answers/new",class:'btn btn-info',style:'margin-bottom:30px;margin-right:10px;'if @question.user_id != current_user.id%>
 <%end%>
 <% if user_signed_in? && !Bookmark.exists?(user_id: current_user.id, question_id: @question.id)%>
-  <%= link_to 'ブックマーク',"/questions/#{@question.id}/bookmark",method: :post, class:'btn btn-info',style:'margin-bottom:30px;margin-right:10px;'%>
+  <button class="bookmark">
+  <%= link_to 'ブックマーク',"/questions/#{@question.id}/bookmark",method: :post, class:'btn btn-info',style:'margin-bottom:30px;margin-right:10px;' %>
 <%elsif user_signed_in?%>
   <%= link_to 'ブックマーク解除',"/bookmarks/#{@question.id}",method: :delete, class:'btn btn-info',style:'margin-bottom:30px;margin-right:10px;'%>
 <%else%>
@@ -35,14 +36,14 @@
 <% if @bestanswer %>
   <div class="bestanswer">
     <h3>ベストアンサー</h3>
-    <div class="answer-prof">
+    <%# <div class="answer-prof">
       <%if @bestuser.image%>
-      <%= image_tag "#{@bestuser.image}" ,class:"icon_image3"%> 
-      <% else %>
-      <%= image_tag "/images/default.jpg" ,class:"icon_image3"%> 
-      <%end%>
-      <%= @bestuser.name %>さんの回答
-    </div>
+      <%# <%= image_tag "#{@bestuser.image}" ,class:"icon_image3"%>  
+      <%# <% else %> 
+      <%# <%= image_tag "/images/default.jpg" ,class:"icon_image3"%> 
+      <%# <%end%> 
+      <%# <%= @bestuser.name %>
+    <%# </div> %> 
       <p class="answer-body">
         <%= @bestanswer.body %>
       </p>
@@ -123,5 +124,8 @@
   </li>
   <% end %>
 </ul>
-
+<button class="bookmark">
+  <span>ブックマーク</span>
+</button>
+  
 </div>
