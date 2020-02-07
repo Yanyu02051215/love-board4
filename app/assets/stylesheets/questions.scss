@@ -152,6 +152,24 @@ ul {
   background: white;
   padding: 8px 16px;
   border-radius: 40px;
+  position: absolute;
+  top: 334px;
+  left: 230px;
+  .span{
+    font-size: 14px;
+  }
+}
+
+.bookmark2{
+  display: inline-block;
+  color: #333;
+  border: 1px solid black;
+  background: white;
+  padding: 8px 16px;
+  border-radius: 40px;
+  position: absolute;
+  top: 334px;
+  left: 230px;
   .span{
     font-size: 14px;
   }

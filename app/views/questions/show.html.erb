@@ -25,10 +25,21 @@
 <%=link_to '回答する',"/questions/#{@question.id}/answers/new",class:'btn btn-info',style:'margin-bottom:30px;margin-right:10px;'if @question.user_id != current_user.id%>
 <%end%>
 <% if user_signed_in? && !Bookmark.exists?(user_id: current_user.id, question_id: @question.id)%>
-  <button class="bookmark">
-  <%= link_to 'ブックマーク',"/questions/#{@question.id}/bookmark",method: :post, class:'btn btn-info',style:'margin-bottom:30px;margin-right:10px;' %>
+  <%= link_to "/questions/#{@question.id}/bookmark",method: :post do%>
+    <button class="bookmark">
+      <i class="far fa-bookmark"></i>
+      <span>ブックマーク</span>
+    </button>
+  <%end%>
+  
 <%elsif user_signed_in?%>
-  <%= link_to 'ブックマーク解除',"/bookmarks/#{@question.id}",method: :delete, class:'btn btn-info',style:'margin-bottom:30px;margin-right:10px;'%>
+  <%= link_to "/bookmarks/#{@question.id}",method: :delete do%>
+  <button class="bookmark2">
+      <i class="fas fa-bookmark"></i>
+      <span>ブックマーク解除</span>
+    </button>
+  <%end%>
+  
 <%else%>
 <%end%>
 </div>
@@ -124,8 +135,5 @@
   </li>
   <% end %>
 </ul>
-<button class="bookmark">
-  <span>ブックマーク</span>
-</button>
   
 </div>
