@@ -1,4 +1,24 @@
 <div class="container">
+<dialog class="modal is-show is-animate">
+  <div class="modal-inner modal-banner">
+    <div class="modal-body">
+      <div class="modal-head bold">
+       確認
+      </div>
+      本当に削除してもよろしいですか？<br>
+      削除キャンセルも出来ます
+    </div>
+  <div class="clearfix">
+    <div class="modal-btn modal-btn-cancel close" id="close">
+    キャンセル
+    </div>
+    <form method="POST" novalidate="novalidate">
+      <input type="hodden">
+        <%=link_to '削除',question_path(@question),method: :delete,class:'modal-btn modal-btn-submit'%>
+    </form>
+  </div>
+  </div>
+</dialog>
 <div class=" margin-top-5per artcle-block">
 <h1><%= @question.title%></h1>
 <div class="padding-bottom-15">

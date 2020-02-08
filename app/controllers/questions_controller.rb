@@ -53,7 +53,10 @@ class QuestionsController < ApplicationController
     end
   end
 
-  def test
+  def men
+  end
+
+  def lady
   end
 
   private

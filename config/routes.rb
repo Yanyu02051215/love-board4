@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   post "/questions/:id/bookmark", to: "bookmarks#create"
   delete "/bookmarks/:id", to: "bookmarks#destroy"
   get "questions/test", to: "questions#test" 
+  get "questions/men", to: "questions#men" 
+  get "questions/lady", to: "questions#lady"
 end

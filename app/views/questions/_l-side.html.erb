@@ -3,15 +3,20 @@
     <ul class="mypage-nav-list">
       <li>
         <%= link_to "質問カテゴリー", edit_user_path(current_user) ,class:'mypage-nav-list-item' if user_signed_in?%>
-        <i class="icon-arrow-right"></i>
+        <i class="fas fa-sort-down"></i>
      </li>
      <li>
-        <%= link_to "性別", edit_user_path(current_user) ,class:'mypage-nav-list-item' if user_signed_in?%>
-        <i class="icon-arrow-right"></i>
+        <%# <%= link_to "性別", edit_user_path(current_user) ,class:'mypage-nav-list-item' if user_signed_in?%> 
+        <select name="select" onChange="location.href=value;" class="side-select" >
+          <option value="#" class="default">性別</option>
+          <option value="/questions/men">男性</option>
+          <option value="/questions/lady">女性</option>
+        </select>
+        <i class="fas fa-sort-down"></i>
      </li>
      <li>
         <%= link_to "年代", edit_user_path(current_user) ,class:'mypage-nav-list-item' if user_signed_in?%>
-        <i class="icon-arrow-right"></i>
+        <i class="fas fa-sort-down"></i>
      </li>
      <li>
         <%= link_to "回答ランキング", edit_user_path(current_user) ,class:'mypage-nav-list-item' if user_signed_in?%>
