@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'questions#index'
-  
+  get "questions/:gender/select", to: "questions#gender"
+  get "questions/:age/select", to: "questions#age"
   resources :questions 
   resources :answers, only: [:create, :edit, :update, :destroy]
   get "/questions/:id/answers/new", to: "answers#new"
@@ -13,6 +14,4 @@ Rails.application.routes.draw do
   post "/questions/:id/bookmark", to: "bookmarks#create"
   delete "/bookmarks/:id", to: "bookmarks#destroy"
   get "questions/test", to: "questions#test" 
-  get "questions/men", to: "questions#men" 
-  get "questions/lady", to: "questions#lady"
 end

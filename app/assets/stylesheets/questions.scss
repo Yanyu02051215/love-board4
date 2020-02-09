@@ -153,8 +153,9 @@ ul {
   padding: 8px 16px;
   border-radius: 40px;
   position: absolute;
-  top: 334px;
-  left: 230px;
+  margin-left: 13px;
+  // top: 334px;
+  // left: 230px;
   .span{
     font-size: 14px;
   }
@@ -168,14 +169,15 @@ ul {
   padding: 8px 16px;
   border-radius: 40px;
   position: absolute;
-  top: 334px;
-  left: 230px;
+  margin-left: 13px;
+  // top: 334px;
+  // left: 230px;
   .span{
     font-size: 14px;
   }
 }
 
-.modal.is-animate {
+.is-animate {
   opacity: 1;
   -webkit-transform: translate(0, 0);
   transform: translate(0, 0);
@@ -204,6 +206,8 @@ ul {
         font-weight: 600;
       }
     }
+    .clearfix{
+    border-top: 1px solid #ccc;
     .modal-btn-cancel {
       float: left;
       line-height: 63px;
@@ -224,9 +228,11 @@ ul {
     .modal-btn-submit {
       float: right;
       border-left: 1px solid #ccc;
+      border-top: none;
       color: #0099e8;
       border-right-width: 0px;
       border-bottom-width: 0px;
+      }
     }
   }
 }
@@ -236,5 +242,8 @@ ul {
 dialog::backdrop {
   background: rgba(0, 0, 0, 0.5);
   animation: modal-open .4s ease;
+}
 
+.btn-danger{
+  margin-bottom:30px;
 }

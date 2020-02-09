@@ -3,7 +3,6 @@ class QuestionsController < ApplicationController
   before_action :find_question, only: [:show,:edit,:update,:destroy]
   before_action :correct_user, only: [:edit, :update,:destroy]
   def index
-    
     @search = Question.ransack(params[:q])
     @results = @search.result.page(params[:page])
   end
@@ -16,7 +15,9 @@ class QuestionsController < ApplicationController
       @answe_is_best << answer.is_best
      end
     @bestanswer = @answers.find_by(is_best: true)
-    # @bestuser = User.find(@bestanswer.user_id)
+    if @bestanswer
+    @bestuser = User.find(@bestanswer.user_id)
+    end
    
   end
 
@@ -53,11 +54,12 @@ class QuestionsController < ApplicationController
     end
   end
 
-  def men
+  def gender
+    @users = User.where(gender: params[:gender])
+    @questions = @users.map{|user| user.questions }
+    @search = Question.ransack(params[:q])
   end
 
-  def lady
-  end
 
   private
 
