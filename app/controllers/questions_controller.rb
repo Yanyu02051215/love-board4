@@ -60,6 +60,12 @@ class QuestionsController < ApplicationController
     @search = Question.ransack(params[:q])
   end
 
+  def age
+    @users = User.where(age: params[:age])
+    @questions = @users.map{|user| user.questions }
+    @search = Question.ransack(params[:q])
+  end
+
 
   private
 
