@@ -73,6 +73,7 @@ class QuestionsController < ApplicationController
 
   def rank
     @all_ranks = Question.find(Bookmark.group(:question_id).order('count(question_id) desc').limit(10).pluck(:question_id))
+    @search = Question.ransack(params[:q])
   end
 
 

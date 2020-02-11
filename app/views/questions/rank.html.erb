@@ -1,3 +1,7 @@
+<%= render 'questions/aside'%>
+
+<%= render 'questions/l-side'%>
+
 <div class="container">
   <ul class="row",style="padding-left: 0px;padding-top: 0px;">
     <% @all_ranks.each.with_index(1) do |q, i|%>
@@ -6,7 +10,7 @@
         <% if i == 1%>
         <p class="rank">
           <i class="fas fa-crown my-gold"></i>
-          第<%= i%>位 aaaa
+          第<%= i%>位 
         </p>
         <%elsif i == 2%>
           <p class="rank">

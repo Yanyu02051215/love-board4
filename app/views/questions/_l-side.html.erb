@@ -61,7 +61,7 @@
         <i class="icon-arrow-right"></i>
      </li>
      <li>
-        <%= link_to "閲覧ランキング", edit_user_path(current_user) ,class:'mypage-nav-list-item' if user_signed_in?%>
+        <%= link_to "人気質問ランキング", questions_rank_path(@question) ,class:'mypage-nav-list-item' %>
         <i class="icon-arrow-right"></i>
      </li>
       <li>

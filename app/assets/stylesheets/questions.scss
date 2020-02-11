@@ -170,8 +170,9 @@ ul {
   border-radius: 40px;
   position: absolute;
   margin-left: 13px;
-  // top: 334px;
-  // left: 230px;
+  .my-black{
+    color:black;
+  }
   .span{
     font-size: 14px;
   }
@@ -260,15 +261,4 @@ dialog::backdrop {
 
 .new_reaction{
   margin-top: 80px;
-}
-.rank{
-  .my-gold{
-    color: #fecb81;
-  }
-  .my-silver{
-    color: #BBBBBB;
-  }
-  .my-copper{
-    color: #FF8856;
-  }
 }
