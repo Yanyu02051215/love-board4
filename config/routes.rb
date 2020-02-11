@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'questions#index'
   get "questions/:gender/select", to: "questions#gender"
   get "questions/:age/select", to: "questions#age"
+  get "questions/:category/select", to: "questions#category"
   resources :questions 
   resources :answers, only: [:create, :edit, :update, :destroy]
   get "/questions/:id/answers/new", to: "answers#new"

@@ -2,7 +2,34 @@
   <nav class="mypage-nav">
     <ul class="mypage-nav-list">
       <li>
-        <%= link_to "質問カテゴリー", edit_user_path(current_user) ,class:'mypage-nav-list-item' if user_signed_in?%>
+        <select name="select" onChange="location.href=value;" class="side-select" >
+          <option value="#" class="default">カテゴリー</option>
+          <option value="/questions/lovingexpression/select">愛情表現</option>
+          <option value="/questions/longrangelove/select">遠距離恋愛</option>
+          <option value="/questions/rundown/select">駆け落ち</option>
+          <option value="/questions/koikatsu/select">恋活</option>
+          <option value="/questions/marriage/select">婚活</option>
+          <option value="/questions/triangle/select">三角関係</option>
+          <option value="/questions/jealousy/select">嫉妬</option>
+          <option value="/questions/brokenheart/select">失恋</option>
+          <option value="/questions/workromance/select">職場恋愛</option>
+          <option value="/questions/sexless/select">セックスレス</option>
+          <option value="/questions/sex/select">セックス</option>
+          <option value="/questions/kiss/select">接吻</option>
+          <option value="/questions/polysexuality/select">多性愛</option>
+          <option value="/questions/date/select">デート</option>
+          <option value="/questions/cohabitation/select">同棲</option>
+          <option value="/questions/nampa/select">ナンパ</option>
+          <option value="/questions/catastrophic/select">破局</option>
+          <option value="/questions/firstlove/select">初恋</option>
+          <option value="/questions/firstglance/select">一目ぼれ</option>
+          <option value="/questions/dried/select">妾</option>
+          <option value="/questions/concubine/select">略奪愛</option>
+          <option value="/questions/plunderlove/select">両性愛</option>
+          <option value="/questions/affair/select">不倫</option>
+          <option value="/questions/divorce/select">離婚</option>
+        </select>
+        <%# <%= link_to "質問カテゴリー", edit_user_path(current_user) ,class:'mypage-nav-list-item' if user_signed_in?%> 
         <i class="fas fa-sort-down"></i>
      </li>
      <li>

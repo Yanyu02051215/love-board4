@@ -66,6 +66,11 @@ class QuestionsController < ApplicationController
     @search = Question.ransack(params[:q])
   end
 
+  def category
+    @questions = Question.where(category: params[:category])
+    @search = Question.ransack(params[:q])
+  end
+
 
   private
 
@@ -74,7 +79,7 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit(:title, :body)
+    params.require(:question).permit(:title, :body, :category)
   end
 
   def correct_user

@@ -3,7 +3,7 @@ class Category < ActiveHash::Base
   self.data = [
       { id: "lovingexpression", value: '愛情表現' },
       { id: "longrangelove", value: '遠距離恋愛' },
-      { id: "run down", value: '駆け落ち' },
+      { id: "rundown", value: '駆け落ち' },
       { id: "koikatsu", value: '恋活' },
       { id: "marriage", value: '婚活' },
       { id: "triangle", value: '三角関係' },

@@ -111,10 +111,15 @@
         <%=link_to "編集",edit_answer_path(answer) if answer.user_id == current_user.id %>
         <%=link_to '削除',answer_path(answer),method: :delete,data: {confirm: "削除しますか？"},style:'margin-bottom:10px;,margin-left:10px;' if answer.user_id == current_user.id%>
         <%end%>
-        <% if user_signed_in? %>
+        <% if user_signed_in? && @question.user_id == current_user.id%>
         <%unless @answe_is_best.include?(true)%>
-        <%= link_to 'ベストアンサー',"/answers/#{answer.id}/is_best",method: :post, class:'btn btn-info',style:'margin-bottom:30px;margin-right:10px;'%>
-        <%end%>
+        <%= link_to "/answers/#{answer.id}/is_best",method: :post do%>
+          <button class="bestanswer2">
+            <i class="far fa-thumbs-up"></i>
+            <span>ベストアンサー</span>
+          </button>
+            <%end%>
+          <%end%>
         <%end%>
   
     </div>
