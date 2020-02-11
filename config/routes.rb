@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "questions/:gender/select", to: "questions#gender"
   get "questions/:age/select", to: "questions#age"
   get "questions/:category/select", to: "questions#category"
+  get "questions/rank", to: "questions#rank"
   resources :questions 
   resources :answers, only: [:create, :edit, :update, :destroy]
   get "/questions/:id/answers/new", to: "answers#new"
