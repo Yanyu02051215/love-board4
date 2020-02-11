@@ -1,82 +1,79 @@
 <div class="container">
   <dialog class="is-animate">
-  <div class="modal-inner modal-banner"> 
-    <div class="modal-body">
-      <div class="modal-head bold">
-       確認
+    <div class="modal-inner modal-banner"> 
+      <div class="modal-body">
+        <div class="modal-head bold">
+        確認
+        </div>
+        本当に削除してもよろしいですか？<br>
+        削除キャンセルも出来ます
       </div>
-      本当に削除してもよろしいですか？<br>
-      削除キャンセルも出来ます
+    <div class="clearfix">
+      <div class="modal-btn modal-btn-cancel close" id="close">
+        キャンセル
+      </div> 
+      <form method="POST" novalidate="novalidate">
+        <input type="hidden">
+          <%=link_to '削除する',question_path(@question),method: :delete,class:'modal-btn modal-btn-submit'%>
+        </form>
+      </div> 
+    </div> 
+  </dialog>
+  <div class=" margin-top-5per artcle-block">
+    <h1><%= @question.title%></h1>
+    <div class="padding-bottom-15">
+      <p class="title">
+        <div class="username">
+          <%if @question.user.image%>
+            <%= image_tag "#{@question.user.image}" ,class:"icon_image2"%> 
+          <% else %>
+            <%= image_tag "/images/default.jpg" ,class:"icon_image2"%> 
+          <%end%>
+          <%=@question.user.name%>さんの質問
+        </div>
+        <div class="question-body">
+          <%=@question.body%>
+        </div>
+      </p>
+      <p class="text-right">
+        <%=@question.created_at.strftime("%Y年%m月%d日")%>
+      </p>
     </div>
-  <div class="clearfix">
-    <div class="modal-btn modal-btn-cancel close" id="close">
-      キャンセル
-    </div> 
-    <form method="POST" novalidate="novalidate">
-      <input type="hidden">
-        <%=link_to '削除する',question_path(@question),method: :delete,class:'modal-btn modal-btn-submit'%>
-    </form>
-    </div> 
-  </div> 
-</dialog>
-<div class=" margin-top-5per artcle-block">
-<h1><%= @question.title%></h1>
-<div class="padding-bottom-15">
-<p class="title">
-<div class="username">
-  <%if @question.user.image%>
-  <%= image_tag "#{@question.user.image}" ,class:"icon_image2"%> 
-  <% else %>
-  <%= image_tag "/images/default.jpg" ,class:"icon_image2"%> 
-  <%end%>
-<%=@question.user.name%>さんの質問
-</div>
-<div class="question-body">
-<%=@question.body%>
-</div>
-</p>
-<p class="text-right">
-<%=@question.created_at.strftime("%Y年%m月%d日")%>
-</p>
-</div>
-<% if current_user  %>
-<%=link_to '編集',edit_question_path(@question),class:'btn btn-primary',style:'margin-bottom:30px;margin-right:10px;'if @question.user_id == current_user.id%>
-<%# <%=link_to '削除',question_path(@question),method: :delete,data: {confirm: "削除しますか？"},class:'btn btn-danger',style:'margin-bottom:30px;'if @question.user_id == current_user.id%> 
-<% if @question.user_id == current_user.id  %>
-  <button id="open" class='btn btn-danger'>削除</button>
-<%end%>
-<%=link_to '回答する',"/questions/#{@question.id}/answers/new",class:'btn btn-info',style:'margin-bottom:30px;margin-right:10px;'if @question.user_id != current_user.id%>
-<%end%>
-<% if user_signed_in? && !Bookmark.exists?(user_id: current_user.id, question_id: @question.id)%>
-  <%= link_to "/questions/#{@question.id}/bookmark",method: :post do%>
-    <button class="bookmark">
-      <i class="far fa-bookmark"></i>
-      <span>ブックマーク</span>
-    </button>
-  <%end%>
-  
-<%elsif user_signed_in?%>
-  <%= link_to "/bookmarks/#{@question.id}",method: :delete do%>
-  <button class="bookmark2">
-      <i class="fas fa-bookmark"></i>
-      <span>ブックマーク解除</span>
-    </button>
-  <%end%>
-  
-<%else%>
-<%end%>
-</div>
+    <% if current_user  %>
+      <%=link_to '編集',edit_question_path(@question),class:'btn btn-primary',style:'margin-bottom:30px;margin-right:10px;'if @question.user_id == current_user.id%> 
+    <% if @question.user_id == current_user.id  %>
+      <button id="open" class='btn btn-danger'>削除</button>
+    <%end%>
+      <%=link_to '回答する',"/questions/#{@question.id}/answers/new",class:'btn btn-info',style:'margin-bottom:30px;margin-right:10px;'if @question.user_id != current_user.id%>
+    <%end%>
+    <% if user_signed_in? && !Bookmark.exists?(user_id: current_user.id, question_id: @question.id)%>
+      <%= link_to "/questions/#{@question.id}/bookmark",method: :post do%>
+        <button class="bookmark">
+          <i class="far fa-bookmark"></i>
+          <span>ブックマーク</span>
+        </button>
+      <%end%>
+    <%elsif user_signed_in?%>
+      <%= link_to "/bookmarks/#{@question.id}",method: :delete do%>
+        <button class="bookmark2">
+          <i class="fas fa-bookmark"></i>
+          <span>ブックマーク解除</span>
+        </button>
+      <%end%> 
+    <%else%>
+    <%end%>
+  </div>
 
-<% if @bestanswer %>
-  <div class="bestanswer">
-    <h3>ベストアンサー</h3>
-    <div class="answer-prof">
-      <%if @bestuser.image%>
-      <%= image_tag "#{@bestuser.image}" ,class:"icon_image3" %>
+  <% if @bestanswer %>
+    <div class="bestanswer">
+      <h3>ベストアンサー</h3>
+        <div class="answer-prof">
+       <%if @bestuser.image%>
+        <%= image_tag "#{@bestuser.image}" ,class:"icon_image3" %>
        <% else %> 
-      <%= image_tag "/images/default.jpg" ,class:"icon_image3"%> 
-      <%end %>
-      <%= @bestuser.name %>
+        <%= image_tag "/images/default.jpg" ,class:"icon_image3"%> 
+       <%end %>
+        <%= @bestuser.name %>
     </div> 
       <p class="answer-body">
         <%= @bestanswer.body %>
@@ -84,82 +81,78 @@
       <p class="text-right">
       <%= @bestanswer.created_at.strftime("%Y年%m月%d日") %>
       </p>
-  </div>
-<% end %>
+    </div>
+  <% end %>
 
-<ul style="padding: 0">
-  <% @answers.each do |answer| %>
-  <li class="li">
-    <div class="thumbnail__caption">
+  <ul style="padding: 0">
+    <% @answers.each do |answer| %>
+    <li class="li">
+      <div class="thumbnail__caption">
         <div class="answer-prof">
-        <%if answer.user.image%>
-        <%= image_tag "#{answer.user.image}" ,class:"icon_image3"%> 
-        <% else %>
-        <%= image_tag "/images/default.jpg" ,class:"icon_image3"%> 
-        <%end%>
-        <%= answer.user.name %>さんの回答
-      </div>
-      
-      
+          <%if answer.user.image%>
+            <%= image_tag "#{answer.user.image}" ,class:"icon_image3"%> 
+          <% else %>
+            <%= image_tag "/images/default.jpg" ,class:"icon_image3"%> 
+          <%end%>
+            <%= answer.user.name %>さんの回答
+          </div>
         <div class="answer-body">
-        <%= answer.body %>
+          <%= answer.body %>
         </div>
         <p class="text-right">
-        <%=answer.created_at.strftime("%Y年%m月%d日")%>
+          <%=answer.created_at.strftime("%Y年%m月%d日")%>
         </p>
         <% if current_user%>
-        <%=link_to "編集",edit_answer_path(answer) if answer.user_id == current_user.id %>
-        <%=link_to '削除',answer_path(answer),method: :delete,data: {confirm: "削除しますか？"},style:'margin-bottom:10px;,margin-left:10px;' if answer.user_id == current_user.id%>
+          <%=link_to "編集",edit_answer_path(answer) if answer.user_id == current_user.id %>
+          <%=link_to '削除',answer_path(answer),method: :delete,data: {confirm: "削除しますか？"},style:'margin-bottom:10px;,margin-left:10px;' if answer.user_id == current_user.id%>
         <%end%>
         <% if user_signed_in? && @question.user_id == current_user.id%>
         <%unless @answe_is_best.include?(true)%>
-        <%= link_to "/answers/#{answer.id}/is_best",method: :post do%>
-          <button class="bestanswer2">
-            <i class="far fa-thumbs-up"></i>
-            <span>ベストアンサー</span>
-          </button>
-            <%end%>
+          <%= link_to "/answers/#{answer.id}/is_best",method: :post do%>
+            <button class="bestanswer2">
+              <i class="far fa-thumbs-up"></i>
+              <span>ベストアンサー</span>
+            </button>
           <%end%>
         <%end%>
-  
-    </div>
-    <% if current_user%>
-    <%if @question.user_id == current_user.id%>
-    <%= form_for @reaction , url:"/answers/#{answer.id}/reaction" do |f| %>
-      <%=f.label:body,"返信する"%>
-      <div class="form-group padding-top-15per">
-      <%=f.text_area:body ,rows: 1,class:'form-control'%>
-      </div>
-      <%=f.submit "返信する",class:'btn btn-info',style:'margin-bottom:30px;margin-right:10px;'%>
-    <%end %>
-     <%end%>
-
-    <%end%>
-    
-
-    <% answer.reactions.each do |reaction| %>
-      <div class="reactionusername">
-        <%if @question.user.image%>
-        <%= image_tag "#{@question.user.image}" ,class:"icon_image2"%> 
-        <% else %>
-        <%= image_tag "/images/default.jpg" ,class:"icon_image2"%> 
-        <%end%>
-        <%=@question.user.name%>さんからの返信
-      </div>
-      <div class="reactionbody">
-        <p>
-          <%= reaction.body%>
-        </p>
-      <div>
-      <div class="reaction-edit">
-      <% if current_user%>
-      <%=link_to "編集",edit_reaction_path(reaction) if reaction.user_id == current_user.id %>
-      <%=link_to '削除',reaction_path(reaction),method: :delete,data: {confirm: "削除しますか？"},style:'margin-bottom:10px;,margin-left:10px;' if reaction.user_id == current_user.id%>
       <%end%>
+    
       </div>
-    <%end%>
+      <% if current_user%>
+        <%if @question.user_id == current_user.id%>
+          <%= form_for @reaction , url:"/answers/#{answer.id}/reaction" do |f| %>
+            <%=f.label:body,"返信する"%>
+            <div class="form-group padding-top-15per">
+              <%=f.text_area:body ,rows: 1,class:'form-control'%>
+            </div>
+            <%=f.submit "返信する",class:'btn btn-info',style:'margin-bottom:30px;margin-right:10px;'%>
+          <%end%>
+        <%end%>
+      <%end%>
+      
 
-  </li>
-  <% end %>
-</ul>  
+      <% answer.reactions.each do |reaction| %>
+        <div class="reactionusername">
+          <%if @question.user.image%>
+            <%= image_tag "#{@question.user.image}" ,class:"icon_image2"%> 
+          <% else %>
+            <%= image_tag "/images/default.jpg" ,class:"icon_image2"%> 
+          <%end%>
+            <%=@question.user.name%>さんからの返信
+        </div>
+        <div class="reactionbody">
+          <p>
+            <%= reaction.body%>
+          </p>
+        </div>
+        <div class="reaction-edit">
+          <% if current_user%>
+            <%=link_to "編集",edit_reaction_path(reaction) if reaction.user_id == current_user.id %>
+            <%=link_to '削除',reaction_path(reaction),method: :delete,data: {confirm: "削除しますか？"},style:'margin-bottom:10px;,margin-left:10px;' if reaction.user_id == current_user.id%>
+          <%end%>
+        </div>
+      <%end%>
+    </li>
+    <% end %>
+  </ul>  
 </div>
