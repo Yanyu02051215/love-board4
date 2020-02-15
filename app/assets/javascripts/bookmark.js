@@ -1,24 +1,23 @@
-// $(function(){
-//   $(document).on("click", ".like2", function(){ 
-//     var product_id = $("#product_id").val(); 
-//     $.ajax({
-//       type:"POST",
-//       url: `/products/${product_id}/likes`,
-//       data: {product_id: product_id}, 
-//       dataType: "json" 
-//     })
-//     .done(function(){
-//       var bbb = document.getElementsByClassName("like2");
-//       bbb[0].textContent = "いいね！" ;
-//       bbb[0].className = "unlike2";
+$(function(){
+  $(document).on("click", ".bookmark", function(){ 
+    var question_id = $("#question_id").val(); 
+    $.ajax({
+      type:"POST",
+      url: `/questions/${question_id}/bookmark`,
+      data: {question_id: question_id}, 
+      dataType: "json" 
+    })
+    .done(function(){
+      var bbb = document.getElementsByClassName("bookmark");
+      bbb[0].textContent = "ブックマーク解除" ;
+      bbb[0].className = "bookmark2";
 
-//       var likeCount = document.getElementsByClassName("count-up")
-//       likeCount[0].textContent = Number(likeCount[0].textContent) + 1
-//       likeCount[0].className = "count-down"
+      var likeCount = document.getElementsByClassName("book")
+      likeCount[0].className = "my-black"
 
-//     })
-//     .fail(function(){
-//       alert("失敗しました"); 
-//     })
-//   })
-// })
+    })
+    .fail(function(){
+      alert("失敗しました"); 
+    })
+  })
+})

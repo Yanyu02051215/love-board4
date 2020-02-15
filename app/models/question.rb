@@ -3,4 +3,6 @@ class Question < ApplicationRecord
   has_many :answers, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
 
+  is_impressionable
+  
 end

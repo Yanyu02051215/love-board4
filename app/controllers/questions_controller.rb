@@ -2,8 +2,13 @@ class QuestionsController < ApplicationController
   before_action :authenticate_user!,only:[:edit,:new,:create,:update,:destroy]
   before_action :find_question, only: [:show,:edit,:update,:destroy]
   before_action :correct_user, only: [:edit, :update,:destroy]
+  impressionist :actions=> [:show]
   def index
     @search = Question.ransack(params[:q])
+    @bestanswers = Answer.where(is_best: 1)
+    @bestanswer_id = @bestanswers.map{|bestanswer| bestanswer.question_id }
+    @btquestions = Question.where(id: @bestanswer_id)
+    @btquestion_id = @btquestions.map{|btquestion| btquestion.id }
     @results = @search.result.page(params[:page])
   end
 
@@ -18,6 +23,7 @@ class QuestionsController < ApplicationController
     if @bestanswer
     @bestuser = User.find(@bestanswer.user_id)
     end
+    impressionist(@question, nil, unique: [:session_hash])
    
   end
 
@@ -74,6 +80,10 @@ class QuestionsController < ApplicationController
   def rank
     @all_ranks = Question.find(Bookmark.group(:question_id).order('count(question_id) desc').limit(10).pluck(:question_id))
     @search = Question.ransack(params[:q])
+  end
+
+  def pvrank
+    @pv_ranks = Question.find(Impression.group(:impressionable_id).order('count(impressionable_id) desc').limit(10).pluck(:impressionable_id))
   end
 
 

@@ -1,7 +1,7 @@
 class Age < ActiveHash::Base
   include ActiveHash::Associations
   self.data = [
-      { id: "10later", value: '10代後半' },
+      { id: "10later", value: '10代後半' ,name:'10later' },
       { id: "20first", value: '20代前半' },
       { id: "20later", value: '20代後半' },
       { id: "30first", value: '30代前半' },
