@@ -1,11 +1,10 @@
-
 <%= render 'questions/aside'%>
 
 <%= render 'questions/l-side'%>
 
 <div class="container">
   <ul class="row",style="padding-left: 0px;padding-top: 0px;">
-    <% @pv_ranks.each.with_index(1) do |q, i|%>
+    <% @user_ranks.each.with_index(1) do |user, i|%>
       
         <li class="question-form">
         <% if i == 1%>
@@ -29,11 +28,8 @@
           </p>
          <%end%>
           <p class="title">
-            <%=link_to(q.title, "/questions/#{q.id}") %>
+            <%=link_to(user.name, "/users/#{user.id}/post") %>
           </p>
-          <p>
-            <%=q.created_at.strftime("%Y年%m月%d日")%>
-          </p> 
         </li>
     <%end%>
   </ul>

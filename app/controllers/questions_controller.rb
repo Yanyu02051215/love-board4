@@ -77,6 +77,11 @@ class QuestionsController < ApplicationController
     @search = Question.ransack(params[:q])
   end
 
+  def userrank
+    @user_ranks = User.find(Answer.group(:user_id).order('count(user_id) desc').limit(10).pluck(:user_id))
+    @search = Question.ransack(params[:q])
+  end
+
   def rank
     @all_ranks = Question.find(Bookmark.group(:question_id).order('count(question_id) desc').limit(10).pluck(:question_id))
     @search = Question.ransack(params[:q])
@@ -84,6 +89,7 @@ class QuestionsController < ApplicationController
 
   def pvrank
     @pv_ranks = Question.find(Impression.group(:impressionable_id).order('count(impressionable_id) desc').limit(10).pluck(:impressionable_id))
+    @search = Question.ransack(params[:q])
   end
 
 

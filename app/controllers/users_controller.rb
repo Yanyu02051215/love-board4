@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_action :authenticate_user!, only: [:post]
+
   def show
     @questions = current_user.questions.order(created_at: :desc)
     @bookmarks = current_user.bookmarks.order(created_at: :desc)
@@ -22,6 +24,12 @@ class UsersController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def post
+    @user = User.find(params[:id])
+    @questions = @user.questions.order(created_at: :desc)
+    @search = Question.ransack(params[:q])
   end
 
   private
