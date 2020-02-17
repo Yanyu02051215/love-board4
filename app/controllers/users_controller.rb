@@ -13,6 +13,7 @@ class UsersController < ApplicationController
       @question_id << bookmark.question_id
     end
     @bookmark_questions = Question.where(id: @question_id)
+    @search = Question.ransack(params[:q])
   end
 
   def edit

@@ -1,33 +1,33 @@
-<div class="container">
-<%= render 'questions/l-side'%>
-<div class="row1",style="padding-left: 87px;">
-<h2>投稿した質問一覧</h2>
-<% @questions.each do |question|%>
-  <%= link_to question do%>
-    <li class="question-form">
-        <p class="title">
-        <%=question.title%>
-        </p>
-          <p>
-        <%=question.created_at.strftime("%Y年%m月%d日")%>
-        </p> 
-      </li>
-  
-  <%end%>
-<%end%>
-<h2>ブックマークした質問一覧</h2>
-<% @bookmark_questions.each do |bookmark_question|%>
-<%= link_to bookmark_question do%>
-<li class="question-form">
-        <p class="title">
-        <%=bookmark_question.title%>
-        </p>
-          <p>
-        <%=bookmark_question.created_at.strftime("%Y年%m月%d日")%>
-        </p> 
-      </li>
-<%end%>
-<%end%>
 
+
+<div class="container">
+    <div class="l-content">
+      <section class="tabs">
+        <input id="all" checked="hecked" name="tab_item" type="radio">
+        <label class="tab_item" for="all"> 投稿一覧</label>
+        <input id="programming"  name="tab_item" type="radio">
+        <label class="tab_item" for="programming"> ブックマーク一覧</label>
+        <div class="tab_content" id="all_content">
+          <div class="tab_content_description">
+            <ul class="mypage-item-list tab-pane.active">
+              <li class="first-child">
+              aaaa
+              </li>
+            </ul>
+          <div>
+        </div>
+        <div class="tab_content" id="programming_content">
+          <div class="tab_content_description">
+            <ul class="mypage-item-list tab-pane">
+              <li class="mypage-item-not-found bold">
+                 
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    <div>
 </div>
-</div>
+    
+
+
