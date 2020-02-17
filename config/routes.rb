@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'questions#index'
   get "questions/:gender/select", to: "questions#gender"
-  get "questions/:age/select", to: "questions#age"
+  get "questions/:age/age", to: "questions#age"
   get "questions/:category/category", to: "questions#category"
   get "questions/userrank", to: "questions#userrank"
   get "questions/rank", to: "questions#rank"
