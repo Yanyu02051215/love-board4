@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :authenticate_user!, only: [:post]
+  before_action :authenticate_user!
 
   def show
     @questions = current_user.questions.order(created_at: :desc)
