@@ -49,9 +49,9 @@ test:
 #
 production:
   <<: *default
-  # database: love-board4_production
-  # username: love-board4
-  # password: <%= ENV['LOVE-BOARD4_DATABASE_PASSWORD'] %>
+  database: love-board4_production
+  username: love-board4
+  password: <%= ENV['LOVE-BOARD4_DATABASE_PASSWORD'] %>
   adapter: postgresql
   encoding: unicode
   pool: 5
