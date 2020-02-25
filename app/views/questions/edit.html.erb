@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="col-md-12 margin-top-5per artcle-block">
+  <div class="col-md-12 margin-top-5per ">
     <h1 class="text-center">質問の編集</h1>
     <div class="padding-bottom-15">
       <%=form_for @question do |f|%>
@@ -11,7 +11,7 @@
         <div class="form-group padding-top-15per">
           <%=f.text_area:body ,rows: 10,class:'form-control'%>
         </div>
-        <%=f.submit class:'btn btn-success'%>
+        <%=f.submit "質問編集" ,class:'btn btn-success'%>
       <%end%>
     </div>
   </div>
