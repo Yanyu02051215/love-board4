@@ -82,3 +82,4 @@ gem 'font-awesome-sass', '~> 5.4.1'
 gem 'active_hash'
 gem 'jquery-rails'
 gem 'impressionist'
+gem "gretel"
