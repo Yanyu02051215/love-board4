@@ -1,7 +1,4 @@
-<%case params.values_at :controller, :action%> 
-<%when ['questions', 'gender']%>
-  <% breadcrumb :gender %>
-<%end%>
+<% breadcrumb :gender, @gender %>
 <%= render 'questions/breadcrumbs'%>
 <%= render 'questions/aside'%>
 <%= render 'questions/l-side'%>

@@ -22,8 +22,16 @@ crumb :rank_question do
   link "質問ランキング"
 end
 
-crumb :gender do
-  link "#{@user.gender}の質問"
+crumb :gender do |gender|
+  link "#{gender}の質問"
+end
+
+crumb :category do |category|
+  link "#{category}の質問"
+end
+
+crumb :age do |age|
+  link "#{age}の質問"
 end
 
 # crumb :root do
