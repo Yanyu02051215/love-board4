@@ -124,19 +124,22 @@ ul {
   }
 }
 @media screen and (max-width:450px){
-  .search-box__text {
-    position: relative;
-    padding: 0;
-    width: 30%;
-    height: 40px;
-    font-size: 14px;
-    padding-left: 10px;
-    padding-right: 40px;
-    border: 1px solid #cccccc;
-    border-radius: 4px;
-    background-color: white;
-    margin-left: 67px;
-  }
+  .question_search{
+    margin-right: 100px;
+    .search-box__text {
+      position: relative;
+      padding: 0;
+      width: 30%;
+      height: 40px;
+      font-size: 14px;
+      padding-left: 10px;
+      padding-right: 40px;
+      border: 1px solid #cccccc;
+      border-radius: 4px;
+      background-color: white;
+      margin-left: 67px;
+    }
+ }
 }
 
 .search-box__btn {
