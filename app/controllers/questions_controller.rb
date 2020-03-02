@@ -9,7 +9,7 @@ class QuestionsController < ApplicationController
     @bestanswer_id = @bestanswers.map{|bestanswer| bestanswer.question_id }
     @btquestions = Question.where(id: @bestanswer_id)
     @btquestion_id = @btquestions.map{|btquestion| btquestion.id }
-    @results = @search.result.page(params[:page]).per(10)
+    @results = @search.result.page(params[:page]).order(created_at: :desc).per(10)
   end
 
   def show
