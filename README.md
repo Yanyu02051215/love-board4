@@ -5,6 +5,36 @@ application up and running.
 
 Things you may want to cover:
 
+## アプリ名
+【恋愛質問箱】
+## アプリ概要
+【恋愛に関するあらゆるお悩みを解決するQ&Aサイトです】
+URL:https://love-board4.herokuapp.com/
+ログイン
+メールアドレス:test@test
+パスワード:testtest
+
+## 使用技術
+* Ruby(2.5.3)
+* Ruby on Rails(5.2.2)
+* JavaScript
+* jQuery
+* Bootstrap
+* Rspec
+* Heroku
+* PostgreSQL
+## 機能一覧
+* 質問新規作成機能
+* 質問編集・削除機能
+* 質問一覧・詳細表示機能
+* 質問検索機能(ransack使用)
+* 質問に対する回答新規作成機能
+* 回答編集・削除機能
+* 回答に対する返信新規作成機能
+* 返信編集・削除機能
+* ブックマーク機能(a-jax)
+* パンくず機能
+* ページネーション機能(kaminari使用)
 
 
 # Usersテーブル
