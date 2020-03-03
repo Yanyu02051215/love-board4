@@ -75,7 +75,7 @@
 
   <ul style="padding: 0">
     <% @answers.each do |answer| %>
-    <% if answer.is_best == 0%>
+    <%# <% if answer.is_best == 0 %> 
     <li class="li">
       <div class="thumbnail__caption">
         <div class="answer-prof">
@@ -106,7 +106,7 @@
           <%end%>
         <%end%>
       <%end%>
-    <% end %>
+    <%# <% end %> 
     
       </div>
       <% if current_user%>
