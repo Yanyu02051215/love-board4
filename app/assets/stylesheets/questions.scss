@@ -21,31 +21,63 @@ body{
   line-height:80px; 
 }
 
-.navbar-text{
-  line-height:80px;
+@media screen and (min-width:451px){
+  .navbar-text{
+    line-height:80px;
+  }
+}
+
+@media screen and (max-width:450px){
+  .navbar-text{
+    line-height:80px;
+    margin-top: 0px;
+    float: right;
+  }
 }
 
 
 
-.icon_image {
-  width: 50px;
-  height: 50px;
-  //サイズ指定
-  border-radius: 100px;
-  //画像を丸くする
-  object-fit: cover;
-  //タテヨコ比を変えないままトリミング
+
+@media screen and (min-width:451px){
+  .icon_image {
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    object-fit: cover;
+  }
 }
 
-.icon_image2{
-  width: 30px;
-  height: 30px;
-  //サイズ指定
-  border-radius: 100px;
-  //画像を丸くする
-  object-fit: cover;
-  //タテヨコ比を変えないままトリミング
-  margin-top:20px;
+@media screen and (max-width:450px){
+  .icon_image {
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    object-fit: cover;
+    margin-top: -13px;
+  }
+}
+
+@media screen and (min-width:451px){
+  .icon_image2{
+    width: 30px;
+    height: 30px;
+    //サイズ指定
+    border-radius: 100px;
+    //画像を丸くする
+    object-fit: cover;
+    //タテヨコ比を変えないままトリミング
+    margin-top:20px;
+  }
+}
+
+@media screen and (max-width:450px){
+  .icon_image2{
+    width: 30px;
+    height: 30px;
+    border-radius: 100px;
+    object-fit: cover;
+    margin-top: -13px;
+  }
 }
 
 
