@@ -13,7 +13,8 @@ class ReactionsController < ApplicationController
     if reaction.save
       redirect_to (question_url(question))
     else
-      render "questions/#{question.id}"
+      # render "questions/#{question.id}"
+      redirect_to (question_url(question))
     end
 
   end
