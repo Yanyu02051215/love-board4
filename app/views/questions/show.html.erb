@@ -70,12 +70,35 @@
       <p class="text-right">
       <%= @bestanswer.created_at.strftime("%Y年%m月%d日") %>
       </p>
+
+      <% @bestanswer.reactions.each do |reaction| %>
+        <div class="reactionusername">
+          <%if @question.user.image%>
+            <%= image_tag "#{@question.user.image}" ,class:"icon_image2"%> 
+          <% else %>
+            <%= image_tag "/images/default.jpg" ,class:"icon_image2"%> 
+          <%end%>
+            <%=@question.user.name%>さんからの返信
+        </div>
+        <div class="reactionbody">
+          <p>
+            <%= reaction.body%>
+          </p>
+        </div>
+        <div class="reaction-edit">
+          <% if current_user%>
+            <%=link_to "編集",edit_reaction_path(reaction) if reaction.user_id == current_user.id %>
+            <%=link_to '削除',reaction_path(reaction),method: :delete,data: {confirm: "削除しますか？"},style:'margin-bottom:10px;,margin-left:10px;' if reaction.user_id == current_user.id%>
+          <%end%>
+        </div>
+      <%end%>
     </div>
   <% end %>
 
   <ul style="padding: 0">
     <% @answers.each do |answer| %>
     <%# <% if answer.is_best == 0 %> 
+    <% if answer.is_best == false %>
     <li class="li">
       <div class="thumbnail__caption">
         <div class="answer-prof">
@@ -106,7 +129,7 @@
           <%end%>
         <%end%>
       <%end%>
-    <%# <% end %> 
+    
     
       </div>
       <% if current_user%>
@@ -146,6 +169,7 @@
  
       <%end%>
     </li>
+    <% end %>
     <% end %>
   </ul>  
 </div>
