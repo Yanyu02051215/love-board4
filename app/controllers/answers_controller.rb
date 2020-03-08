@@ -2,6 +2,7 @@ class AnswersController < ApplicationController
   before_action :authenticate_user!
   before_action :find_answer, only: [:update,:destroy]
   before_action :correct_user, only: [:edit, :update,:destroy]
+  # before_action :gard_answer_user, only: [:new]
 
   def new
     @answer = Answer.new
@@ -69,6 +70,13 @@ class AnswersController < ApplicationController
         redirect_to root_url
       end
   end
+
+  # def gard_answer_user
+  #   @question = Question.find(params[:id])
+  #     if @question.user_id == current_user.id
+  #       redirect_to root_url
+  #     end
+  # end
 end
 
 
