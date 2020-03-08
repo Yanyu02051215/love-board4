@@ -20,6 +20,7 @@ URL:https://love-board4.herokuapp.com/
 * JavaScript
 * jQuery
 * Bootstrap
+* HAML
 * Rspec
 * Heroku
 * PostgreSQL

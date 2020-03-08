@@ -5,17 +5,16 @@ class AnswersController < ApplicationController
 
   def new
     @answer = Answer.new
-    @question = Question.find(params[:id])
+    @question = Question.find(params[:question_id])
   end
 
 
   def create
     answer = Answer.new(answer_params)
-    # @question = Question.find(params[:id])
     answer.user_id = current_user.id
-    answer.question_id = params[:id]
+    answer.question_id = params[:question_id]
      if answer.save
-      redirect_to (question_url(params[:id]))
+      redirect_to (question_url(params[:question_id]))
      else
       render :new
      end
@@ -48,7 +47,6 @@ class AnswersController < ApplicationController
   def is_best
     @answer = Answer.find(params[:id])
     @question = Question.find(@answer.question_id)
-    # @answer.is_best = 1
     @answer.update(is_best: true)
     redirect_to(question_url(@question)) 
   end

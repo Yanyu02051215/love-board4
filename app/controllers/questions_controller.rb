@@ -65,8 +65,6 @@ class QuestionsController < ApplicationController
     @questions = @users.map{|user| user.questions }
     @search = Question.ransack(params[:q])
     @gender = Gender.find(params[:gender]).value
-    # @user = User.find_by(gender: params[:gender])
-    # @gender = @user.gender
   end
 
   def age

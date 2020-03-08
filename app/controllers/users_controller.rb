@@ -5,7 +5,6 @@ class UsersController < ApplicationController
   def show
     @questions = current_user.questions.order(created_at: :desc)
     @bookmarks = current_user.bookmarks.order(created_at: :desc)
-    # @test = current_user.bookmark_questions
 
 
     @question_id = []
