@@ -6,12 +6,12 @@ class ReactionsController < ApplicationController
   def create
     reaction = Reaction.new(reaction_params)
     reaction.user_id = current_user.id
-    reaction.answer_id = params[:id]
+    reaction.answer_id = params[:answer_id]
 
     if reaction.save
       redirect_to (question_url(reaction.question))
     else
-      redirect_to (question_url(reaction.question))
+      render (question_url(reaction.question))
     end
 
   end
@@ -32,9 +32,6 @@ class ReactionsController < ApplicationController
     end
   end
 
-  def destroy
-    
-  end
 
   private
 

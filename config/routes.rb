@@ -15,12 +15,12 @@ Rails.application.routes.draw do
     member do
       post :is_best
     end
-    # resources :reaction , only: [:edit, :update, :destroy]
+    resources :reactions , only: [:create]
   end
 
   resources :users, only: [:show, :edit, :update]
   resources :reactions, only: [:edit, :update, :destroy]
-  post "/answers/:id/reaction", to: "reactions#create"
+  # post "/answers/:id/reaction", to: "reactions#create"
   post "/questions/:id/bookmark", to: "bookmarks#create"
   delete "/bookmarks/:id", to: "bookmarks#destroy"
 end

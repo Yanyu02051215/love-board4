@@ -97,7 +97,6 @@
 
   <ul style="padding: 0">
     <% @answers.each do |answer| %>
-    <%# <% if answer.is_best == 0 %> 
     <% if answer.is_best == false %>
     <li class="li">
       <div class="thumbnail__caption">
@@ -134,7 +133,7 @@
       </div>
       <% if current_user%>
         <%if @question.user_id == current_user.id%>
-          <%= form_for @reaction , url:"/answers/#{answer.id}/reaction" do |f| %>
+          <%= form_for [answer, @reaction] do |f| %>
             <%=f.label:body,"返信する"%>
             <div class="form-group padding-top-15per">
               <%=f.text_area:body ,rows: 1,class:'form-control'%>
@@ -163,7 +162,7 @@
         <div class="reaction-edit">
           <% if current_user%>
             <%=link_to "編集",edit_reaction_path(reaction) if reaction.user_id == current_user.id %>
-            <%=link_to '削除',reaction_path(reaction),method: :delete,data: {confirm: "削除しますか？"},style:'margin-bottom:10px;,margin-left:10px;' if reaction.user_id == current_user.id%>
+            <%# <%=link_to '削除',reaction_path(reaction),method: :delete,data: {confirm: "削除しますか？"},style:'margin-bottom:10px;,margin-left:10px;' if reaction.user_id == current_user.id%> 
           <%end%>
         </div>
  

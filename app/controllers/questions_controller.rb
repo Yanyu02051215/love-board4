@@ -15,10 +15,7 @@ class QuestionsController < ApplicationController
   def show
     @answers = Answer.where(question_id: params[:id])
     @reaction = Reaction.new
-    @answe_is_best = []
-     @answers.each do |answer|
-      @answe_is_best << answer.is_best
-     end
+    @answe_is_best = @answers.map{ |answer|answer.is_best }
     @bestanswer = @answers.find_by(is_best: true)
     if @bestanswer
     @bestuser = User.find(@bestanswer.user_id)
