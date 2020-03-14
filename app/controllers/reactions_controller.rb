@@ -7,14 +7,11 @@ class ReactionsController < ApplicationController
     reaction = Reaction.new(reaction_params)
     reaction.user_id = current_user.id
     reaction.answer_id = params[:id]
-    answer = Answer.find(params[:id])
-    question = Question.find(answer.question_id)
 
     if reaction.save
-      redirect_to (question_url(question))
+      redirect_to (question_url(reaction.question))
     else
-      # render "questions/#{question.id}"
-      redirect_to (question_url(question))
+      redirect_to (question_url(reaction.question))
     end
 
   end
