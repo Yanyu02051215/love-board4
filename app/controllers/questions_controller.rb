@@ -18,10 +18,9 @@ class QuestionsController < ApplicationController
     @answe_is_best = @answers.map{ |answer|answer.is_best }
     @bestanswer = @answers.find_by(is_best: true)
     if @bestanswer
-    @bestuser = User.find(@bestanswer.user_id)
+      @bestuser = User.find(@bestanswer.user_id)
     end
     impressionist(@question, nil, unique: [:session_hash])
-   
   end
 
   def edit
@@ -34,18 +33,18 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     @question.user_id = current_user.id
-     if @question.save
-      redirect_to @question,notice:'投稿に成功しました'
-     else
-      render :new,alert:'投稿に失敗しました'
-     end
+    if @question.save
+      redirect_to @question
+    else
+      render :new
+    end
   end
 
   def update
     if @question.update(question_params)
-      redirect_to @question,notice:'編集に成功しました'
+      redirect_to @question
     else
-      render :edit,alert:'編集に失敗しました'
+      render :edit
     end
   end
 
