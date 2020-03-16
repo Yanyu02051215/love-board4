@@ -36,6 +36,7 @@ URL:https://love-board4.herokuapp.com/
 * ブックマーク機能(a-jax)
 * パンくず機能
 * ページネーション機能(kaminari使用)
+* SNSシェア機能
 
 
 # Usersテーブル
