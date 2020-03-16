@@ -50,9 +50,9 @@
       <div class="bookmark-line">
         <%= render partial: "bookmarks/bookmark", locals: { question: @question } %>
       </div>
-      <div>
-        <%= link_to 'Twitter', "https://twitter.com/share?url=#{request.url}&text=タイトル", title: 'Twitter', target: '_blank' %>
-        <%= link_to 'Facebook', "https://www.facebook.com/sharer/sharer.php?u=#{request.url}&text=タイトル", title: 'Facebook', target: '_blank' %>
+      <div id='sosyal'>
+        <%= link_to 'Twitter', "https://twitter.com/share?url=#{request.url}&text=タイトル", class: 'twitter', title: 'Twitter', target: '_blank' %>
+        <%= link_to 'Facebook', "https://www.facebook.com/sharer/sharer.php?u=#{request.url}&text=タイトル", class: 'facebook', title: 'Facebook', target: '_blank' %>
       </div>
     </div>
   </div>
