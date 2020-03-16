@@ -235,7 +235,7 @@ ul {
   .bookmark-line{
     cursor: pointer;
     cursor: hand;
-    width:166px;
+    width:184px;
     .bookmark{
       display: inline-block;
       color: #333;
@@ -258,6 +258,7 @@ ul {
     border-radius: 40px;
     position: absolute;
     margin-left: 13px;
+    margin-right: 13px;
     .my-black{
       color:black;
     }
