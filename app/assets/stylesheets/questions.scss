@@ -269,6 +269,48 @@ ul {
   }
 }
 
+@media screen and (max-width:450px){
+  .btn-line{
+    display:inline-flex;
+    .bookmark-line{
+      cursor: pointer;
+      cursor: hand;
+      width:184px;
+      .bookmark{
+        display: inline-block;
+        color: #333;
+        border: 1px solid black;
+        background: white;
+        padding: 8px 10px;
+        border-radius: 40px;
+        position: absolute;
+        margin-left: 3px;
+      .span{
+        font-size: 13px;
+      }
+    }  
+    .bookmark2{
+      display: inline-block;
+      color: #333;
+      border: 1px solid black;
+      background: white;
+      padding: 8px 10px;
+      border-radius: 40px;
+      position: absolute;
+      margin-left: 3px;
+      margin-right: 13px;
+      .my-black{
+        color:black;
+      }
+      .span{
+        font-size: 13px;
+        }
+      }
+    }
+  }
+}
+
+
 .is-animate {
   opacity: 1;
   -webkit-transform: translate(0, 0);
