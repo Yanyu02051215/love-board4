@@ -97,5 +97,11 @@ RSpec.describe '質問機能' , type: :system do
         expect(page).to have_content "男性の質問"
       end
     end
+    context 'レディースの時' do
+      it "レディースの質問のみ表示される" do
+        visit "/questions/lady/select"
+        expect(page).to have_content "女性の質問"
+      end
+    end
   end
 end
