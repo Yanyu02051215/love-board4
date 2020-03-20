@@ -109,5 +109,11 @@ RSpec.describe '質問機能' , type: :system do
         expect(page).to have_content "男性の質問"
       end
     end
+    context '駈け落ちの時' do
+      it "カテゴリーが駈け落ちの質問のみ表示される" do
+        visit "/questions/rundown/category"
+        expect(page).to have_content "男性の質問"
+      end
+    end
   end
 end
