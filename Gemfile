@@ -85,4 +85,3 @@ gem 'active_hash'
 gem 'jquery-rails'
 gem 'impressionist'
 gem "gretel"
-gem "acts-as-taggable-on"
