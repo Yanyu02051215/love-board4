@@ -90,6 +90,22 @@ RSpec.describe '質問機能' , type: :system do
       end
     end
   end
+  describe '回答返信機能' do
+    context 'ログインして回答へ返信する時' do
+      before do
+        sign_in(user)
+      end
+      it '回答へ返信できる' do
+      #   expect{
+      #     visit question_path(question)
+      #     click_on '回答する'
+      #     fill_in "回答", with: '質問への回答'
+      #     click_on '回答する'
+      #     expect(page).to have_content '恋愛質問箱'
+      #   }.to change(Answer, :count).by(1)
+      # end
+    end
+  end
   describe 'カテゴリー毎の質問表示機能' do 
     context 'メンズの時' do
       it "メンズの質問のみ表示される" do
