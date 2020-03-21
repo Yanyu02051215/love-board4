@@ -6,6 +6,7 @@ class Question < ApplicationRecord
   validates :title, presence: true
   validates :body, { presence: true, length:{maximum: 255} }
 
+  #ランキング機能の為
   is_impressionable
   
 end
