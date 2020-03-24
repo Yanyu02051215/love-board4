@@ -1,0 +1,29 @@
+<dialog class="is-animate-sort">
+    <div class="modal-banner-sort"> 
+      <form class="new_search_form">
+        <button class="search-sort-button">
+          <span>
+            <%= sort_link(@search, :created_at, "作成日順", default_order: :desc)%>
+          </span>
+        </button>
+        <button class="search-sort-button">
+          <span>
+            <%= sort_link(@search, :answers_count, "回答数順", default_order: :desc)%>
+          </span>
+        </button>
+        <button class="search-sort-button">
+          <span>
+            <%= sort_link(@search, :bookmarks_count, "ブックマーク数順" , default_order: :desc)%>
+          </span>
+        </button>
+      </form>
+    <div class="clearfix">
+      <div class="modal-btn modal-btn-cancel close" id="close">
+        キャンセル
+      </div> 
+      <form method="POST" novalidate="novalidate">
+        <input type="hidden">
+        </form>
+      </div> 
+    </div> 
+  </dialog>
