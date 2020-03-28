@@ -10,7 +10,14 @@
 </p>
 </div>
 <%= form_for [@question, @answer] do |f| %>
-<%=f.label:body,"回答"%>
+<% if @answer.errors.any?%>
+  <% @answer.errors.full_messages.each do |message| %>
+    <div>
+      <%= message %>
+    </div>
+  <%end%>
+<%end%>
+<%=f.label:body%>
  <div class="form-group padding-top-15per">
 <%=f.text_area:body ,rows: 10,class:'form-control'%>
 </div>

@@ -20,7 +20,7 @@ class QuestionsController < ApplicationController
     if @bestanswer
       @bestuser = User.find(@bestanswer.user_id)
     end
-    impressionist(@question, nil, unique: [:session_hash])
+    # impressionist(@question, nil, unique: [:session_hash])
   end
 
   def edit
