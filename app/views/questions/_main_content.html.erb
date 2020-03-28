@@ -1,8 +1,7 @@
 <div class="container">
-  <%= render 'questions/sort'%>
   <ul class="row",style="padding-left: 0px;padding-top: 0px;">
+    <%= render 'questions/sort'%>
     <% @results.each do |result|%>
-
       <li class="question-form">
         <p class="title">
         <%=link_to(result.title, "/questions/#{result.id}") %>
