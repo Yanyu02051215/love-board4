@@ -57,25 +57,25 @@
     </div>
   </div>
 
-  <% if @bestanswer %>
+  <% if @question.find_bestanswer %>
     <div class="bestanswer">
       <h3>ベストアンサー</h3>
         <div class="answer-prof">
-       <%if @bestuser.image%>
-        <%= image_tag "#{@bestuser.image}" ,class:"icon_image3" %>
+       <%if @question.find_bestanswer.user.image%>
+        <%= image_tag "#{@question.find_bestanswer.user.image}" ,class:"icon_image3" %>
        <% else %> 
         <%= image_tag "/images/default.jpg" ,class:"icon_image3"%> 
        <%end %>
-        <%= @bestuser.name %>
+        <%= @question.find_bestanswer.user.name %>
     </div> 
       <p class="answer-body">
-        <%= @bestanswer.body %>
+        <%= @question.find_bestanswer.body %>
       </p>
       <p class="text-right">
-      <%= @bestanswer.created_at.strftime("%Y年%m月%d日") %>
+      <%= @question.find_bestanswer.created_at.strftime("%Y年%m月%d日") %>
       </p>
 
-      <% @bestanswer.reactions.each do |reaction| %>
+      <% @question.find_bestanswer.reactions.each do |reaction| %>
         <div class="reactionusername">
           <%if @question.user.image%>
             <%= image_tag "#{@question.user.image}" ,class:"icon_image2"%> 
@@ -100,7 +100,7 @@
   <% end %>
 
   <ul style="padding: 0">
-    <% @answers.each do |answer| %>
+    <% @question.answers.each do |answer| %>
     <% if answer.is_best == false %>
     <li class="li">
       <div class="thumbnail__caption">
@@ -123,7 +123,7 @@
           <%=link_to '削除',answer_path(answer),method: :delete,data: {confirm: "削除しますか？"},style:'margin-bottom:10px;,margin-left:10px;' if answer.user_id == current_user.id%>
         <%end%>
         <% if user_signed_in? && @question.user_id == current_user.id%>
-        <%unless @answe_is_best.include?(true)%>
+        <% unless @question.have_bestanswer?%>
           <%= link_to "/answers/#{answer.id}/is_best",method: :post do%>
             <button class="bestanswer2">
               <i class="far fa-thumbs-up"></i>

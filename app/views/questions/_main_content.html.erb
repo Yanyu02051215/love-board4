@@ -8,14 +8,14 @@
         </p>
           <p>
         <%=result.created_at.strftime("%Y年%m月%d日")%>
-        </p> 
-        <% if @btquestion_id.include?(result.id)  %>
-        <i class="fas fa-comment"></i>
-          解決済み
+        </p>
+        <% if result.check_bestanswer  %>
+          <i class="fas fa-comment"></i>
+            解決済み
         <%else%>
-        <i class="far fa-comment"></i>
-         回答待ち
-         <%end%>
+          <i class="far fa-comment"></i>
+            回答待ち
+        <%end%>
       </li>
     <% end %>
 

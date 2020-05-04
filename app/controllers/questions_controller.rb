@@ -5,22 +5,11 @@ class QuestionsController < ApplicationController
   impressionist :actions=> [:show]
   def index
     @search = Question.ransack(params[:q])
-    @bestanswers = Answer.where(is_best: 1)
-    @bestanswer_id = @bestanswers.map{|bestanswer| bestanswer.question_id }
-    @btquestions = Question.where(id: @bestanswer_id)
-    @btquestion_id = @btquestions.map{|btquestion| btquestion.id }
     @results = @search.result.page(params[:page]).order(created_at: :desc).per(10)
   end
 
   def show
-    @answers = Answer.where(question_id: params[:id])
     @reaction = Reaction.new
-    @answe_is_best = @answers.map{ |answer|answer.is_best }
-    @bestanswer = @answers.find_by(is_best: true)
-    if @bestanswer
-      @bestuser = User.find(@bestanswer.user_id)
-    end
-    # impressionist(@question, nil, unique: [:session_hash])
   end
 
   def edit
